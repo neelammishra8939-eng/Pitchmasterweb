@@ -1,0 +1,19 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #0b0b0b, #202020);
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+header {
+  background-color: #111;
+  padding: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #ffcc00;
+  text-shadow: 0 0 8px #ffcc00;
+}
+
+#video-container
