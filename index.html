@@ -15,4 +15,17 @@
   
   <script src="app.js"></script>
 <script src="track.js"></script></body>
-</html>
+<script>
+async function requestCameraAccess() {
+  try {
+    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    document.body.innerHTML += "<p style='color:white;'>✅ Camera access granted!</p>";
+    stream.getTracks().forEach(track => track.stop());
+  } catch (err) {
+    document.body.innerHTML += "<p style='color:red;'>❌ Camera access denied or not supported</p>";
+    console.error("Camera access error:", err);
+  }
+}
+
+requestCameraAccess();
+</script></html>
