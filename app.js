@@ -5,7 +5,20 @@ const video = document.getElementById('camera');
 const startBtn = document.getElementById('start-btn');
 const resultBox = document.getElementById('results');
 
-let stream = null;
+let stream = null;// PitchMaster Web – Camera Access + Live Preview
+
+// Select main app container
+const app = document.getElementById("app");
+
+// Create title
+const title = document.createElement("h1");
+title.innerText = "🎯 PitchMaster Web";
+title.style.textAlign = "center";
+title.style.color = "white";
+title.style.marginTop = "40px";
+title.style.fontFamily = "Poppins, sans-serif";
+
+// Create subtitle
 let tracking = false;
 let frameCount = 0;
 
