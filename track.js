@@ -1,18 +1,26 @@
-// PitchMaster Web - Ball Tracking Demo (Camera Access)
-const video = document.createElement('video');
-video.autoplay = true;
-video.style.width = '100vw';
-video.style.height = '100vh';
-document.body.appendChild(video);
+const video = document.getElementById("video");
+const canvas = document.getElementById("canvas");
+const context = canvas.getContext("2d");
 
 async function startCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
-  } catch (err) {
-    alert('Camera access blocked! Please allow camera permissions.');
-    console.error(err);
+
+    video.addEventListener("loadedmetadata", () => {
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;
+      track();
+    });
+  } catch (error) {
+    alert("Camera access denied or not available. Please enable camera access.");
+    console.error(error);
   }
+}
+
+function track() {
+  context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  requestAnimationFrame(track);
 }
 
 startCamera();
